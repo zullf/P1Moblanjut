@@ -3,8 +3,13 @@ import { useState } from 'react';
 
 export default function Latihan1() {
        const [motivasi, setMotivasi] = useState('');
+       const hobi= ['Nonton Movie', 'Futsal', 'Musik'];
        const tampilkanMotivasi = () => {
-         setMotivasi("Apapun yang terjadi, terjadilah");
+          if (motivasi === '') {
+            setMotivasi("Kegagalan bukan akhir, melainkan bagian dari proses belajar");
+          }else{
+            setMotivasi('');
+         }
         };
          return (
         <View style={styles.container}>
@@ -19,11 +24,14 @@ export default function Latihan1() {
          <Text style={[styles.teks]}>Angkatan: 2024</Text>
          <Text style={styles.judul}>Bio Singkat</Text>
          <Text style={[styles.bio]}>Saya adalah seorang mahasiswa Fakultas Ilmu komputer yang berfokus
-         pada pengembangan website serta mobile untuk kedepannya, saya menguasai figma dan react dasar 
-         untuk pengembangan website</Text>
+         pada pengembangan website serta mobile</Text>
+         <Text style={styles.judul}>Hobi :</Text>
+        {hobi.map((item, index) => (
+        <Text key={index}>{item}</Text>
+      ))}
          <Text style={styles.counter}>Motivasi : {motivasi}</Text>
          <Button
-            title="Tampilkan Motivasi"
+         title={motivasi === '' ? 'Tampilkan Motivasi' : 'Sembunyikan Motivasi'}
             onPress={tampilkanMotivasi}
             color="blue"
          />
